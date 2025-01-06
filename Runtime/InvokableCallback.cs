@@ -34,6 +34,8 @@ public class InvokableCallback<T0, TReturn> : InvokableCallbackBase<TReturn> {
 	}
 
 	public override TReturn Invoke(params object[] args) {
+		if(args == null || args.Length < 1)
+			return func((T0)default);
 		// Convert from special "unity-nulls" to true null
 		if (args[0] is UnityEngine.Object && (UnityEngine.Object) args[0] == null) args[0] = null;
 		return func((T0) args[0]);
