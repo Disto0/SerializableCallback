@@ -130,6 +130,14 @@ public class SerializableCallbackDrawer : PropertyDrawer {
 			EditorGUI.indentLevel = indent;
 		}
 
+		SerializableCallback<bool> cb = (SerializableCallback<bool>)property.boxedValue;
+		if (cb != null)
+		{
+			pos.y += EditorGUIUtility.singleLineHeight + EditorGUIUtility.standardVerticalSpacing;
+			pos.x = position.x;
+			EditorGUI.Toggle(pos, "evaluation", cb?.Invoke() == true);
+		}
+
 		// Set indent back to what it was
 		EditorGUI.EndProperty();
 		property.serializedObject.ApplyModifiedProperties();
