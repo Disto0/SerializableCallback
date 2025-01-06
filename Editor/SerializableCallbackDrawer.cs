@@ -314,7 +314,7 @@ public class SerializableCallbackDrawer : PropertyDrawer {
 		SerializedProperty targetProp = property.FindPropertyRelative("_target");
 		SerializedProperty argProps = property.FindPropertyRelative("_args");
 		SerializedProperty dynamicProp = property.FindPropertyRelative("_dynamic");
-		float height = lineheight + lineheight;
+		float height = lineheight + lineheight + lineheight;
 		if (targetProp.objectReferenceValue != null && targetProp.objectReferenceValue is MonoScript) height += lineheight;
 		else if (targetProp.objectReferenceValue != null && !dynamicProp.boolValue) height += argProps.arraySize * lineheight;
 		height += 8;
